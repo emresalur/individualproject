@@ -7,9 +7,13 @@ class Asset:
 
         self.quantity = quantity
 
+        # Initialize the list with the initial price
+        self.historical_prices = [price] 
+
         self.demand = 1
 
         self.supply = 1
+
 
     def __str__(self):
 
@@ -22,6 +26,15 @@ class Asset:
     def get_price(self):
 
         return self.price
+
+    def get_mean_price(self):
+
+        return sum(self.historical_prices) / len(self.historical_prices)
+    
+    def update_price(self, new_price):
+
+        self.price = new_price
+        self.historical_prices.append(new_price)
 
     def set_name(self, name):
 

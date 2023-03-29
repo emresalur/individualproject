@@ -1,6 +1,6 @@
 body {
-    background-color: rgb(234, 230, 226);
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: navy;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: medium;
     line-height: 1.5;
     color: #221f1f;
@@ -10,29 +10,32 @@ body {
     margin: 0 auto;
     transition: background-color 0.3s ease-in-out;
     box-sizing: border-box;
-  }
-  
-  /* Adding space between charts using margin */
-  #wealthiest_agent,
-  #gini,
-  #chart_currents {
-    margin: 20px;
-  }
-  
-  /* You can also target each chart individually for more specific spacing */
-  #wealthiest_agent {
-    margin-bottom: 20px;
-  }
-  
-  #gini {
-    margin-right: 20px;
-  }
-  
-  /* To change positioning, you can use Flexbox or Grid, but for this example, we'll use Flexbox */
-  .parent-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-  }
-  
+}
+.container {
+    background-color: rgb(189, 197, 196);
+    border: 10px solid #b4c048;
+    border-radius: 10px;
+    padding: 10px 15px 20px 15px;
+    margin: 10px 15px 20px 15px;
+    box-sizing: border-box;
+    }
+
+.world-grid-parent {
+    margin-bottom: 100px;
+    }
+
+.pie.chart {
+    margin-top: 100px;
+
+    transform: translate(1150, 1150);
+
+    transform: skew(20deg, 20deg);
+
+    transform: rotateY(45deg) translateZ(50px);
+
+    }
+    
+    
+    
+
+

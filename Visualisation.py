@@ -29,14 +29,13 @@ simulation_params = {
         "choice",
         "Trading Strategy",
         value="Asset Trading", # default
-        choices=["Asset Trading", "Random", "Proportional"],
+        choices=["Asset Trading", "Wealth Trading", "Mean Reversion", "Momentum"],
         description="Choose the trading strategy for the agents.",
     ),
 
     "width": NUMBER_OF_CELLS,
 
     "height": NUMBER_OF_CELLS,
-    
 }
 
 def wealth_to_radius(wealth):
@@ -86,7 +85,7 @@ chart_currents = PieChartModule(
         {"Label": "Wealthy Agents", "Color": "Green"},
         {"Label": "Non Wealthy Agents", "Color": "Red"},
     ],
-    canvas_height=300,
+
     data_collector_name="datacollector_currents",
 
 )
@@ -95,8 +94,6 @@ wealthiest_agent = ChartModule(
     [
         {"Label": "Wealthiest Agent", "Color": "Purple"},
     ],
-
-    canvas_width=750,
 
     data_collector_name="datacollector_wealthiest_agent",
 
@@ -111,10 +108,12 @@ gini = ChartModule(
 )
 
 # create the grid with the initial values
-grid = CanvasGrid(agent_portrayal, NUMBER_OF_CELLS, NUMBER_OF_CELLS, SIZE_OF_CANVAS_IN_PIXELS_X, SIZE_OF_CANVAS_IN_PIXELS_Y)
+grid = CanvasGrid(agent_portrayal, 10, 10, 500, 500)
 
-server = ModularServer(FinancialModel, [grid, wealthiest_agent, gini, chart_currents, CustomCSS()], "Financial Model", simulation_params)
-
-server.port = 8522
+server = ModularServer(FinancialModel, 
+                    [grid, wealthiest_agent, gini, chart_currents, CustomCSS()],
+                    "Financial Model", 
+                    simulation_params,
+                    8523)
 
 server.launch()
